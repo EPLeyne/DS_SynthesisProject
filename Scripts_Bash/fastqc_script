@@ -12,4 +12,5 @@
 module load fastqc/0.11.8 
 
 
-fastqc /OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome/*.fastq.gz -o /OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results2/
+fastqc /OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome/*.fastq.gz -o /OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3/ 
+-t=64
