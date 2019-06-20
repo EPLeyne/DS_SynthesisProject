@@ -1,2 +1,6 @@
 slurm*
 *.fastq.gz
+*.trimlog
+testrun_results/
+?trimlog*
+

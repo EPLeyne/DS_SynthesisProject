@@ -12,3 +12,15 @@ home/data/trimmed/
 
 home/results/03_trinity
 
+Trimmomatic notes....
+
+trim_testrun contains the test of trimmomatic on one file
+
+trim log contains:
+1. read name
+2. surviving sequence length
+3. location of first surviving base
+4. location of last surviving base
+5. the amount trimmed from the end.
+
+
