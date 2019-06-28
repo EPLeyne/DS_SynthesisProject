@@ -2,8 +2,10 @@
 
 import glob
 import csv
+import os
 
-globfiles = glob.glob('/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome/*.fastq.gz')
+os.chdir("/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome/")
+globfiles = glob.glob('*.fastq*')
 
 
 with open("../filenames3.scv", 'w') as f:
