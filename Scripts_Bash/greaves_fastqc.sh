@@ -12,7 +12,7 @@
 module load fastqc/0.11.5
 
 #SAMPLES=( $(cut -d " " -f 1 fastqcInputList.csv) );
-INFILES=( $(cut -d , -f 1 filenames.csv) );
+INFILES=( $(cut -d , -f 2 filenames.csv) );
 
 if [ ! -z "$SLURM_ARRAY_TASK_ID" ]
 then
