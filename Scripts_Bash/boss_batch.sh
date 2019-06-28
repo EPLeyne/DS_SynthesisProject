@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-#SBATCH --job-name=Canola_SNP_call
+#SBATCH --job-name=boss_test
 #SBATCH --time=2:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=40GB
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=ley015@csiro.au
 
 
 #-------------------------FILES REQUIRED--------------------------#
 # IN THE SAME FOLDER:
-	## SCRIPT 1: master_batch.sh
+	## SCRIPT 1: boss_batch.sh
 	## SCRIPT 2: SNP_AUTOMATIC.sh
 	## FILE 1: SNP POSIITON FILE (optional)
 	## FILE 2 inputList.txt file of samples and id to use.  2 column space delimited file  Col 1 = ID, Col 2 
@@ -23,8 +25,8 @@
 
 #DO NOT CHANGE!!!!!!!!!!
 module load fastqc 
-module load trinity 
-module load gatk 
+# module load trinity 
+# module load gatk 
 
 
 
@@ -38,10 +40,10 @@ module load gatk
 #------------------------ENVIRONMENTAL VARIABLES-----------------#
 
 #This needs to be changed for your specific directories
-export INDIR=OSM/CBR/AF_HETEROSIS/work/2018_dataschool/data/processed/Alignment/SAM		#Directory of SAM files
-export OUTDIR=OSM/CBR/AF_HETEROSIS/work/2018_dataschool/data/processed/SNP_CALL			#Final output directory
-export GENDIR=OSM/CBR/AF_HETEROSIS/work/2018_dataschool/genome							#Genome directory
-export FASTA=Brassica_napus_v4.1.chromosomes.fa
+export INDIR=OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome                		#Directory of FASTQ files
+export OUTDIR=OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3                  		#Final output directory
+#export GENDIR=OSM/CBR/AF_HETEROSIS/work/2018_dataschool/genome							#Genome directory
+#export FASTA=Brassica_napus_v4.1.chromosomes.fa
 
 #-----------------------FASTQC VARIABLES-------------------------#
 
@@ -59,13 +61,13 @@ export FASTA=Brassica_napus_v4.1.chromosomes.fa
 #-----------------------GATK VARIABLES---------------------------#
 
 #Can change if you want to
-export ALLELE=6			#Max allowed alternate alleles DEFAULT = 6
-export PLOIDY=2			#Expected Ploidy DEFAULT = 2
-export GATKQUAL=20.0  	#Minimum allowed quality of SNP
-export WIN=35 			#Looking for window size (bp) containing SNPs  DEAULT = 35 GATK best practices
-export CLUS=3 			#Number of required SNPs in window to form cluster  DEFAULT = 3 GATK best practices
-export FS=30.0			#Filter SNPs on Fisher strand values  DEFAULT = 30.0 GATK best practices
-export QD=2.0			#Filter quality by depth  DEFAULT = 2.0 GATK best practices
+#export ALLELE=6			#Max allowed alternate alleles DEFAULT = 6
+#export PLOIDY=2			#Expected Ploidy DEFAULT = 2
+#export GATKQUAL=20.0  	#Minimum allowed quality of SNP
+#export WIN=35 			#Looking for window size (bp) containing SNPs  DEAULT = 35 GATK best practices
+#export CLUS=3 			#Number of required SNPs in window to form cluster  DEFAULT = 3 GATK best practices
+#export FS=30.0			#Filter SNPs on Fisher strand values  DEFAULT = 30.0 GATK best practices
+#export QD=2.0			#Filter quality by depth  DEFAULT = 2.0 GATK best practices
 
 
 #-----------------------STAR VARIABLES---------------------------#
