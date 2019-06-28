@@ -4,4 +4,4 @@ slurm*
 testrun_results/
 ?trimlog*
 trinity_out_dir
-*.csv
+
