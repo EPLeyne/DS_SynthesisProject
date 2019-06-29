@@ -11,6 +11,7 @@
 
 
 #----------------------project variables------------------------# 
+## These directories should be put into the boss_batch file
 IN_DIR=/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome
 OUT_DIR=/OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3/
 #---------------------------------------------------------------#
