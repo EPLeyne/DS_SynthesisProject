@@ -27,11 +27,3 @@ if [ ! -z "$SLURM_ARRAY_TASK_ID" ]
     else
         echo "Error: Missing array index as SLURM_ARRAY_TASK_ID"
 fi
-
-
-#module load fastqc/0.11.8 
-
-
-#fastqc 
-#/OSM/CBR/AF_DATASCHOOL/input/epl/r1/CA73YANXX_8_161220_BPO--0"${SLURM_ARRAY_TASK_ID}"_Other_TAAGGCGA-CTCTCTAT_R_161128_SHADIL_LIB2500_M002_R1.fastq.gz 
-#-o /OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3/
