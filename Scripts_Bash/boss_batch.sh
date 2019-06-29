@@ -24,9 +24,11 @@
 #-----------------------Load required modules---------------------#
 
 #DO NOT CHANGE!!!!!!!!!!
-module load fastqc 
+module load fastqc # Add suffix to each module
 # module load trinity 
+# module load bowtie
 # module load gatk 
+# module load star
 
 
 
@@ -40,9 +42,14 @@ module load fastqc
 #------------------------ENVIRONMENTAL VARIABLES-----------------#
 
 #This needs to be changed for your specific directories
-export INDIR=OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome                		#Directory of FASTQ files
-export OUTDIR=OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3                  		#Final output directory
-#export GENDIR=OSM/CBR/AF_HETEROSIS/work/2018_dataschool/genome							#Genome directory
+export CSIROID=ley015
+export INDIR=OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome   	#Directory of raw FASTQ files
+export QCOUTDIR=OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3        #FASTQC output directory
+#export TrinityOUTDIR=flush1/........					#Interim output of Trinity
+#export TrimFINOUTDIR=OSM/CBR/AF_DATASCHOOL/output/Trimmed		#Output directory of Trimmomatic files transferred
+								    	# from flush, created in Trinity
+#export TrinityFINOUTDIR=OSM/CBR/AF_DATASCHOOL/output/Trinity		#Output dir of final Trinity files, transferred from flush
+#export GENDIR=OSM/CBR/AF_HETEROSIS/work/2018_dataschool/genome		#Genome directory
 #export FASTA=Brassica_napus_v4.1.chromosomes.fa
 
 #-----------------------FASTQC VARIABLES-------------------------#
