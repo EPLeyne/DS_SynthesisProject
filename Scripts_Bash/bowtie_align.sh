@@ -1,0 +1,29 @@
+#!/bin/bash
+
+#***************************************************************#
+#            Generate Viral Genome Index POMV and ISA           #
+#***************************************************************#
+
+#--------------------------sbatch header------------------------#
+
+#SBATCH --job-name=bowtie_index
+#SBATCH --time=00:00:10
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=1GB
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=ley015@csiro.au
+#SBATCH --output=../Logs/bowtie_index_%A.out
+
+#---------------------------------------------------------------#
+
+module load bowtie
+
+INXDIR=/flush1/ley015/wheat_fasta/CS.fasta
+READSDIR=../trinity_out_dir
+OUTDIR=/flush1/ley015
+
+bowtie2 -p 8 -x ${IDXDIR}/POMV \
+-1 ${READSDIR}/000_test_1P.fatsq.gz \
+-2 ${READSDIR}/POMV24HPIR1Unmapped.out.mate2.fastq  \
+-S ${OUTDIR}/BOWTIE_unmapped.sam 2> ${OUTDIR}/BOWTIE_unmapped.log
