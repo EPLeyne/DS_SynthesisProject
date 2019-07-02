@@ -19,11 +19,11 @@
 
 module load bowtie
 
-INXDIR=/flush1/ley015/wheat_fasta/CS.fasta
-READSDIR=../trinity_out_dir
+INXDIR=/flush1/ley015/wheat_fasta
+READSDIR=../testrun_results
 OUTDIR=/flush1/ley015
 
-bowtie2 -p 8 -x ${IDXDIR}/POMV \
--1 ${READSDIR}/000_test_1P.fatsq.gz \
--2 ${READSDIR}/POMV24HPIR1Unmapped.out.mate2.fastq  \
+bowtie2 -p 8 -x ${IDXDIR}/CS.fasta \
+-1 ${READSDIR}/000_test_1P.fastq.gz \
+-2 ${READSDIR}/000_test_2P.fastq.gz  \
 -S ${OUTDIR}/BOWTIE_unmapped.sam 2> ${OUTDIR}/BOWTIE_unmapped.log
