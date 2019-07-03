@@ -27,3 +27,4 @@ bowtie2 -p 8 -x ${IDXDIR}/CS.fasta \
 -1 ${READSDIR}/000_test_1P.fastq.gz \
 -2 ${READSDIR}/000_test_2P.fastq.gz  \
 -S ${OUTDIR}/BOWTIE_unmapped.sam 2> ${OUTDIR}/BOWTIE_unmapped.log
+fi

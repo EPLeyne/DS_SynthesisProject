@@ -18,7 +18,7 @@ OUT_DIR=/OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3/
 
 module load fastqc/0.11.5
 
-IN_FILE_LIST=( $(cut -d , -f 1 ../filenames4.csv | grep -v sample_id) );
+IN_FILE_LIST=( $(cut -d , -f 1 ../filenames.csv | grep -v sample_id) );
 
 if [ ! -z "$SLURM_ARRAY_TASK_ID" ]
     then
