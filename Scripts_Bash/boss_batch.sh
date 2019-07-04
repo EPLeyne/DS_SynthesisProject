@@ -23,14 +23,14 @@
 
 #-----------------------Load required modules---------------------#
 
-#DO NOT CHANGE!!!!!!!!!!
-module load fastqc # Add suffix to each module
+#DO NOT CHANGE!!!!!!!!!! 
+module load jemalloc
+module load python/3.7.2
+module load fastqc/0.11.8
 # module load trinity 
 # module load bowtie
 # module load gatk 
 # module load star
-
-
 
 
 #------------------------PROJECT VARIABLES-----------------------#
@@ -42,9 +42,10 @@ module load fastqc # Add suffix to each module
 #------------------------ENVIRONMENTAL VARIABLES-----------------#
 
 #This needs to be changed for your specific directories
+export PROJECTNAME=ds_synthesis
 export CSIROID=ley015
-export INDIR=OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome   	#Directory of raw FASTQ files
-export QCOUTDIR=OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3        #FASTQC output directory
+export INDIR=/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome   	#Directory of raw FASTQ files
+export OUTDIR=/flush1/${CSIROID}/${PROJECTNAME}/results
 #export TrinityOUTDIR=flush1/........					#Interim output of Trinity
 #export TrimFINOUTDIR=OSM/CBR/AF_DATASCHOOL/output/Trimmed		#Output directory of Trimmomatic files transferred
 								    	# from flush, created in Trinity
@@ -53,6 +54,9 @@ export QCOUTDIR=OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3        #FASTQC 
 #export FASTA=Brassica_napus_v4.1.chromosomes.fa
 
 #-----------------------FASTQC VARIABLES-------------------------#
+export QCOUTDIR=${OUTDIR}/01_fastqc/
+
+#-----------------------FILELIST VARIABLES-----------------------#
 
 
 
@@ -88,17 +92,20 @@ export QCOUTDIR=OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3        #FASTQC 
 
 #---------------------calling batch job--------------------------#
 
-GENO=( $(cut -d " " -f 1 inputList.txt) );
-INFILES=( $(cut -d " " -f 2 inputList.txt) );
+python ../Scripts_Python/glob_csv_write_filepaths.py INDIR
+
+
+#GENO=( $(cut -d " " -f 1 inputList.txt) );
+#INFILES=( $(cut -d " " -f 2 inputList.txt) );
 
 #USAGE: sbatch -a 0 master_batch.sh
 #Only need to alter below line if using -d or not and using -l or not.  
 
-if [ ! -z "$SLURM_ARRAY_TASK_ID" ]
-then
-    i=$SLURM_ARRAY_TASK_ID
-	exec 1> /OSM/CBR/AF_HETEROSIS/work/2018_dataschool/scripts/${GENO[i]}.log 2>&1
-	bash SNP_AUTOMATIC.sh -c SAM -i /${INDIR}/${INFILES[i]} -g /${GENDIR}/${FASTA} -f ${GENO[i]}
-else
-    echo "Error: Missing array index as SLURM_ARRAY_TASK_ID"
-fi
+#if [ ! -z "$SLURM_ARRAY_TASK_ID" ]
+#then
+#    i=$SLURM_ARRAY_TASK_ID
+#	exec 1> /OSM/CBR/AF_HETEROSIS/work/2018_dataschool/scripts/${GENO[i]}.log 2>&1
+#	bash SNP_AUTOMATIC.sh -c SAM -i /${INDIR}/${INFILES[i]} -g /${GENDIR}/${FASTA} -f ${GENO[i]}
+#else
+#    echo "Error: Missing array index as SLURM_ARRAY_TASK_ID"
+#fi
