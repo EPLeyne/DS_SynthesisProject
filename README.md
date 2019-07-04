@@ -24,3 +24,4 @@ trim log contains:
 5. the amount trimmed from the end.
 
 
+cont....
