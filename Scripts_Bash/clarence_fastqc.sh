@@ -10,21 +10,23 @@
 #SBATCH --mail-user=ley015@csiro.au
 
 
-#----------------------project variables------------------------# 
-## These directories should be put into the boss_batch file
-IN_DIR=/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome
-OUT_DIR=/OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3/
-#---------------------------------------------------------------#
+# #----------------------project variables------------------------# 
+# ## These directories should be put into the boss_batch file
+# IN_DIR=/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome
+# OUT_DIR=/OSM/CBR/AF_DATASCHOOL/output/epl/fastqc_results3/
+# #---------------------------------------------------------------#
+
 
 module load fastqc/0.11.5
 
-IN_FILE_LIST=( $(cut -d , -f 1 ../filenames.csv | grep -v sample_id) );
+
+IN_FILE_LIST=( $(cut -d , -f 1 ${OUTDIR}/filenames.csv | grep -v sample_id) );
 
 if [ ! -z "$SLURM_ARRAY_TASK_ID" ]
     then
         i=$SLURM_ARRAY_TASK_ID
-        IN_FILE=${IN_DIR}/${IN_FILE_LIST[$i]}
-        fastqc ${IN_FILE} --noextract -o ${OUT_DIR}
+        IN_FILE=${INDIR}/${IN_FILE_LIST[$i]}
+        fastqc ${IN_FILE} --noextract -o ${OUTDIR}
     else
         echo "Error: Missing array index as SLURM_ARRAY_TASK_ID"
 fi

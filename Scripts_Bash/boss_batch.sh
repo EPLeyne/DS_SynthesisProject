@@ -44,7 +44,7 @@ module load fastqc/0.11.8
 #This needs to be changed for your specific directories
 export PROJECTNAME=ds_synthesis
 export CSIROID=ley015
-export INDIR=OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome   	#Directory of raw FASTQ files
+export INDIR=/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome/   	#Directory of raw FASTQ files
 export OUTDIR=/flush1/${CSIROID}/${PROJECTNAME}/results
 #export TrinityOUTDIR=flush1/........					#Interim output of Trinity
 #export TrimFINOUTDIR=OSM/CBR/AF_DATASCHOOL/output/Trimmed		#Output directory of Trimmomatic files transferred
@@ -92,7 +92,7 @@ export QCOUTDIR=${OUTDIR}/01_fastqc/
 
 #---------------------calling batch job--------------------------#
 
-python ../Scripts_Python/glob_csv_write_filepaths.py "$INDIR"
+python ../Scripts_Python/glob_csv_write_filepaths.py "$INDIR" "$OUTDIR"
 
 
 #GENO=( $(cut -d " " -f 1 inputList.txt) );
