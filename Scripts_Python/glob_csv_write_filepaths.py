@@ -9,18 +9,20 @@ import csv
 import os
 import pandas as pd
 import sys
-print sys.argv[1]
-
+#import pathlib
+#import subprocess
+INDIR = sys.argv[1]
+print(INDIR)
 #indirectory = '$INDIR/*fastq*'
 
 # globfiles = glob.glob('/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome/*.fastq*')
-globfiles = glob.glob(${INDIR}'/*fastq*')
-
+globfiles = glob.glob(os.path.join('${INDIR}/*fastq*')
+print (globfiles)
 with open("../filenames.csv", 'w') as f:  #Need to create a $filename for projects
     writer = csv.writer(f)
     writer.writerow(['sample_id', 'test'])
     for filenames in globfiles:
-        writer.writerow([os.path.basename(filenames),'1'],)
+         writer.writerow([os.path.basename(filenames),'1'])
 
 fwdglobfiles = glob.glob('${INDIR}/*R1.fastq*')
 revglobfiles = glob.glob('${INDIR}/*R2.fastq*')
@@ -31,8 +33,8 @@ with open("../fwd_filenames.csv", 'w') as g:  #Need to create a $filename for pr
     for fwdfilenames in fwdglobfiles:
         writerfwd.writerow([os.path.basename(fwdfilenames)[34:51],os.path.basename(fwdfilenames)])
 
-with open("../rev_filenames.csv", 'w') as g:  #Need to create a $filename for projects
-    writerrev = csv.writer(g)
+with open("../rev_filenames.csv", 'w') as h:  #Need to create a $filename for projects
+    writerrev = csv.writer(h)
     writerrev.writerow(['key','rev_sample_id'])
     for revfilenames in revglobfiles:
         writerrev.writerow([os.path.basename(revfilenames)[34:51],os.path.basename(revfilenames)])

@@ -44,7 +44,7 @@ module load fastqc/0.11.8
 #This needs to be changed for your specific directories
 export PROJECTNAME=ds_synthesis
 export CSIROID=ley015
-export INDIR=/OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome   	#Directory of raw FASTQ files
+export INDIR=OSM/CBR/AF_DATASCHOOL/input/2019-04-12_Transcritome   	#Directory of raw FASTQ files
 export OUTDIR=/flush1/${CSIROID}/${PROJECTNAME}/results
 #export TrinityOUTDIR=flush1/........					#Interim output of Trinity
 #export TrimFINOUTDIR=OSM/CBR/AF_DATASCHOOL/output/Trimmed		#Output directory of Trimmomatic files transferred
@@ -75,7 +75,7 @@ export QCOUTDIR=${OUTDIR}/01_fastqc/
 #export ALLELE=6			#Max allowed alternate alleles DEFAULT = 6
 #export PLOIDY=2			#Expected Ploidy DEFAULT = 2
 #export GATKQUAL=20.0  	#Minimum allowed quality of SNP
-#export WIN=35 			#Looking for window size (bp) containing SNPs  DEAULT = 35 GATK best practices
+#export WIN=35 			#Looking for window size (bp) containing SNPs  DEFAULT = 35 GATK best practices
 #export CLUS=3 			#Number of required SNPs in window to form cluster  DEFAULT = 3 GATK best practices
 #export FS=30.0			#Filter SNPs on Fisher strand values  DEFAULT = 30.0 GATK best practices
 #export QD=2.0			#Filter quality by depth  DEFAULT = 2.0 GATK best practices
@@ -92,7 +92,7 @@ export QCOUTDIR=${OUTDIR}/01_fastqc/
 
 #---------------------calling batch job--------------------------#
 
-python ../Scripts_Python/glob_csv_write_filepaths.py INDIR
+python ../Scripts_Python/glob_csv_write_filepaths.py "$INDIR"
 
 
 #GENO=( $(cut -d " " -f 1 inputList.txt) );
